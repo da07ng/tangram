@@ -55,13 +55,11 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": [
-        "prettier-eslint --write \"src/**/*.js\"",
+      "src/**/*.js": [
+        "prettier-eslint --write",
         "git add"
       ]
     },
-    "ignore": [
-      "src/assets/js/**/*.js"
-    ]
+    "ignore": []
   }
 }
