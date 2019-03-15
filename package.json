@@ -56,7 +56,7 @@
   "lint-staged": {
     "linters": {
       "src/**/*.js": [
-        "prettier-eslint --write",
+        "prettier-eslint --write \"src/**/*.js\"",
         "git add"
       ]
     },
