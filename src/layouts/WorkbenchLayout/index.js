@@ -18,4 +18,3 @@ class WorkbenchLayout extends Component {
 }
 
 export default WorkbenchLayout;
-

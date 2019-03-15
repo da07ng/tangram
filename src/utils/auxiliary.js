@@ -41,9 +41,4 @@ function getQueryString(name) {
   return null;
 }
 
-export {
-  searchParams,
-  formatTime,
-  subString,
-  getQueryString
-};
+export { searchParams, formatTime, subString, getQueryString };
