@@ -7,11 +7,11 @@ import DefaultLayout from './layouts/DefaultLayout';
 import AccountLayout from './layouts/AccountLayout';
 import WorkbenchLayout from './layouts/WorkbenchLayout';
 
-import Home from './containers/Home';
-import Signup from './containers/Signup';
-import Signin from './containers/Signin';
-import Blog from './containers/Blog';
-import NotFound from './containers/NotFound';
+import Home from './views/Home';
+import Signup from './views/Signup';
+import Signin from './views/Signin';
+import Blog from './views/Blog';
+import NotFound from './views/NotFound';
 
 const query = gql`
   {
@@ -27,41 +27,48 @@ const query = gql`
 
 class App extends Component {
   render() {
+    const DefaultRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props => (
+          <DefaultLayout {...props} data={this.props.data}>
+            <Component />
+          </DefaultLayout>
+        )}
+      />
+    );
+
+    const AccountRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props => (
+          <AccountLayout {...props} data={this.props.data}>
+            <Component />
+          </AccountLayout>
+        )}
+      />
+    );
+
+    const WorkbenchRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props => (
+          <WorkbenchLayout {...props} data={this.props.data}>
+            <Component />
+          </WorkbenchLayout>
+        )}
+      />
+    );
+
     return (
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <DefaultLayout data={this.props.data}>
-              <Home />
-            </DefaultLayout>
-          )}
-        />
-        <Route
-          path="/signup"
-          render={() => (
-            <AccountLayout data={this.props.data}>
-              <Signup />
-            </AccountLayout>
-          )}
-        />
-        <Route
-          path="/signin"
-          render={() => (
-            <AccountLayout data={this.props.data}>
-              <Signin />
-            </AccountLayout>
-          )}
-        />
-        <Route
-          path="/blog"
-          render={() => (
-            <WorkbenchLayout data={this.props.data}>
-              <Blog />
-            </WorkbenchLayout>
-          )}
-        />
+        <DefaultRoute exact path="/" component={Home} />
+
+        <AccountRoute path="/signin" component={Signin} />
+        <AccountRoute path="/signup" component={Signup} />
+
+        <WorkbenchRoute path="/blog" component={Blog} />
+
         <Route component={NotFound} />
       </Switch>
     );

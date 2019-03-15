@@ -60,6 +60,8 @@
         "git add"
       ]
     },
-    "ignore": []
+    "ignore": [
+      "src/assets/js/**/*.js"
+    ]
   }
 }
