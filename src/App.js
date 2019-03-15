@@ -27,11 +27,13 @@ const query = gql`
 
 class App extends Component {
   render() {
+    const { data } = this.props;
+
     const DefaultRoute = ({ component: Component, ...rest }) => (
       <Route
         {...rest}
         render={props => (
-          <DefaultLayout {...props} data={this.props.data}>
+          <DefaultLayout {...props} data={data}>
             <Component />
           </DefaultLayout>
         )}
@@ -42,7 +44,7 @@ class App extends Component {
       <Route
         {...rest}
         render={props => (
-          <AccountLayout {...props} data={this.props.data}>
+          <AccountLayout {...props} data={data}>
             <Component />
           </AccountLayout>
         )}
@@ -53,7 +55,7 @@ class App extends Component {
       <Route
         {...rest}
         render={props => (
-          <WorkbenchLayout {...props} data={this.props.data}>
+          <WorkbenchLayout {...props} data={data}>
             <Component />
           </WorkbenchLayout>
         )}
