@@ -13,8 +13,6 @@ import Signin from './containers/Signin';
 import Blog from './containers/Blog';
 import NotFound from './containers/NotFound';
 
-import './styles/globalStyles';
-
 const query = gql`
   {
     account @client {
@@ -31,25 +29,34 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => (
+        <Route
+          exact
+          path="/"
+          render={() => (
             <DefaultLayout data={this.props.data}>
               <Home />
             </DefaultLayout>
           )}
         />
-        <Route path="/signup" render={() => (
+        <Route
+          path="/signup"
+          render={() => (
             <AccountLayout data={this.props.data}>
               <Signup />
             </AccountLayout>
           )}
         />
-        <Route path="/signin" render={() => (
+        <Route
+          path="/signin"
+          render={() => (
             <AccountLayout data={this.props.data}>
               <Signin />
             </AccountLayout>
           )}
         />
-        <Route path="/blog" render={() => (
+        <Route
+          path="/blog"
+          render={() => (
             <WorkbenchLayout data={this.props.data}>
               <Blog />
             </WorkbenchLayout>

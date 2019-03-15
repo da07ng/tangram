@@ -15,6 +15,7 @@ import config from './config';
 import localState from './localState';
 
 import './assets/css/semantic.min.css';
+import GlobalStyle from './styles/globalStyle';
 
 import App from './App';
 import registerServiceWorker from './utils/registerServiceWorker';
@@ -58,9 +59,12 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Router>
-      <App />
-    </Router>
+    <React.Fragment>
+      <GlobalStyle />
+      <Router>
+        <App />
+      </Router>
+    </React.Fragment>
   </ApolloProvider>,
   document.getElementById('root')
 );
