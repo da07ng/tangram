@@ -11,6 +11,7 @@ import Home from './views/Home';
 import Signup from './views/Signup';
 import Signin from './views/Signin';
 import Blog from './views/Blog';
+import Editor from './views/Editor';
 import NotFound from './views/NotFound';
 
 const query = gql`
@@ -70,6 +71,7 @@ class App extends Component {
         <AccountRoute path="/signup" component={Signup} />
 
         <WorkbenchRoute path="/blog" component={Blog} />
+        <WorkbenchRoute path="/:id" component={Editor} />
 
         <Route component={NotFound} />
       </Switch>

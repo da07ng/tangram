@@ -38,7 +38,7 @@ const persistor = new CachePersistor({
 });
 
 const link = new HttpLink({
-  uri: config.api.graphqlUrl,
+  uri: config.api.graphql,
   credentials: 'same-origin'
 });
 
