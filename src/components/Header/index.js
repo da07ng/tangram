@@ -37,7 +37,7 @@ class Header extends Component {
       <div id="header">
         <Menu>
           <Container>
-            <Menu.Item header>Somni</Menu.Item>
+            <Menu.Item header>Pages</Menu.Item>
             <Menu.Item name="home" as={Link} to="/" />
 
             {this.props.account.loggedIn

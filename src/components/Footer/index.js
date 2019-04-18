@@ -16,7 +16,7 @@ class Footer extends Component {
       <div id="footer">
         <div className="ui container">
           <a href="/" className="">
-            InfoVis
+            Pages
           </a>
           <StyledButton>Click Here</StyledButton>
         </div>
