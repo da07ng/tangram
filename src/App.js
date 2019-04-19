@@ -10,8 +10,8 @@ import WorkbenchLayout from './layouts/WorkbenchLayout';
 import Home from './views/Home';
 import Signup from './views/Signup';
 import Signin from './views/Signin';
+import Page from './views/Page';
 import Blog from './views/Blog';
-import Editor from './views/Editor';
 import NotFound from './views/NotFound';
 
 const query = gql`
@@ -71,7 +71,7 @@ class App extends Component {
         <AccountRoute path="/signup" component={Signup} />
 
         <WorkbenchRoute path="/blog" component={Blog} />
-        <WorkbenchRoute path="/:id" component={Editor} />
+        <WorkbenchRoute path="/u/:id" component={Page} />
 
         <Route component={NotFound} />
       </Switch>
