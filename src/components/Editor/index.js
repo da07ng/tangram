@@ -115,6 +115,8 @@ const initialValue = Value.fromJSON({
   }
 });
 
+const plugins = [];
+
 class Editor extends Component {
   constructor(props) {
     super(props);
@@ -122,14 +124,14 @@ class Editor extends Component {
     this.state = {
       value: initialValue
     };
-
-    this.onChange = ({ value }) => {
-      console.log(value);
-      this.setState({ value });
-    };
   }
 
-  onKeyDown(event, editor, next) {
+  handleChange = ({ value }) => {
+    console.log(value);
+    this.setState({ value });
+  };
+
+  handleKeyDown = (event, editor, next) => {
     if (!event.ctrlKey) return next();
 
     switch (event.key) {
@@ -148,14 +150,15 @@ class Editor extends Component {
         return next();
       }
     }
-  }
+  };
 
   render() {
     return (
       <SlateEditor
+        plugins={plugins}
         value={this.state.value}
-        onChange={this.onChange}
-        onKeyDown={this.onKeyDown}
+        onChange={this.handleChange}
+        onKeyDown={this.handleKeyDown}
         renderNode={renderNode}
         renderMark={renderMark}
       />
