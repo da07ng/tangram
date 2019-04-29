@@ -2,118 +2,10 @@ import React, { Component } from 'react';
 import { Editor as SlateEditor } from 'slate-react';
 import { Value } from 'slate';
 
-import { renderNode, renderMark } from './render';
+import renderNode from './renderer/renderNode';
+import renderMark from './renderer/renderMark';
 
-const initialValue = Value.fromJSON({
-  document: {
-    nodes: [
-      {
-        object: 'block',
-        type: 'paragraph',
-        key: '1111111111',
-        nodes: [
-          {
-            object: 'text',
-            key: '222222222',
-            leaves: [
-              {
-                text: 'This is editable '
-              },
-              {
-                text: 'rich',
-                marks: [
-                  {
-                    type: 'bold'
-                  }
-                ]
-              },
-              {
-                text: ' text, '
-              },
-              {
-                text: 'much',
-                marks: [
-                  {
-                    type: 'italic'
-                  }
-                ]
-              },
-              {
-                text: ' better than a '
-              },
-              {
-                text: '<textarea>',
-                marks: [
-                  {
-                    type: 'code'
-                  }
-                ]
-              },
-              {
-                text: '!'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        object: 'block',
-        type: 'paragraph',
-        nodes: [
-          {
-            object: 'text',
-            leaves: [
-              {
-                text:
-                  "Since it's rich text, you can do things like turn a selection of text "
-              },
-              {
-                text: 'bold',
-                marks: [
-                  {
-                    type: 'bold'
-                  }
-                ]
-              },
-              {
-                text:
-                  ', or add a semantically rendered block quote in the middle of the page, like this:'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        object: 'block',
-        type: 'block-quote',
-        nodes: [
-          {
-            object: 'text',
-            leaves: [
-              {
-                text: 'A wise quote.'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        object: 'block',
-        type: 'paragraph',
-        nodes: [
-          {
-            object: 'text',
-            leaves: [
-              {
-                text: 'Try it out for yourself!'
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-});
+import initialValue from './value.json';
 
 const plugins = [];
 
@@ -122,7 +14,7 @@ class Editor extends Component {
     super(props);
 
     this.state = {
-      value: initialValue
+      value: Value.fromJSON(initialValue)
     };
   }
 
